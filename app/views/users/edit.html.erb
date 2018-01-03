@@ -1,0 +1,6 @@
+<%= form_for @user do |f| %>
+  <%= f.label :role %>
+  <%= f.select :role, ["designer", "producer"] %>
+  
+  <%= f.submit "Finish Profile!" %>
+<% end %>

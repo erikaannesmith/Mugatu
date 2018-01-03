@@ -24,6 +24,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    if current_designer?
+      redirect_to designer_dashboard_path(@user)
+    elsif current_producer?
+      redirect_to producer_dashboard_path(@user)
+    end
+  end
+
   private
 
   def user_params

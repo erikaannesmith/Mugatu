@@ -14,7 +14,8 @@ describe "Admin order permissions" do
 
   it "default users cannot view admin orders" do
     user = User.create(username: "designer",
-                       password: "test")
+                       password: "test",
+                       role: "designer")
 
     expect(user.role).to eq("designer")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
