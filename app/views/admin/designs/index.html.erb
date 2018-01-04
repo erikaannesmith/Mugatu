@@ -1,0 +1,6 @@
+
+<% @designs.each do |design| %>
+  <ul class='design'>
+    <li class='title-link'><%= link_to design.title, admin_design_path(current_user, design) %></li>
+  </ul>
+<% end %>
