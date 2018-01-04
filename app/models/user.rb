@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :username, presence: true, uniqueness: true
   enum role: ["designer", "producer", "admin"]
+  has_many :designs
 
   def self.from_omniauth(auth)
     user = User.where(username: auth["info"]["name"]).first

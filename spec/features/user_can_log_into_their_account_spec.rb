@@ -3,7 +3,9 @@ require 'rails_helper'
 describe "User can log into their account" do
   it "They will be logged in as the current_user" do
     user = User.create(username: "designer",
-                       password: "test")
+                       password: "test",
+                       role: 0)
+                       
     visit '/'
     click_on "I already have an account"
 

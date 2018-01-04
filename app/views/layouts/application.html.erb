@@ -12,6 +12,12 @@
 <% end %>
 <% if current_user %>
   <%= link_to "Logout", logout_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign Up", new_user_path %>
+  <%= link_to "I already have an account", login_path %>
+  <button class='loginBtn loginBtn--google'>
+    <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+  </button>
 <% end %>
 <%= yield %>
 
