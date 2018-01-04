@@ -4,8 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    check_user = User.where(username: request.env['omniauth.auth']["info"]["name"]).first
     if params[:provider].present?
+      check_user = User.where(username: request.env['omniauth.auth']["info"]["name"]).first
       if check_user.nil?
         user = User.from_omniauth(request.env['omniauth.auth'])
         session[:user_id] = user.id
@@ -15,8 +15,10 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         if current_designer?
           redirect_to designer_dashboard_path(user)
+          flash[:notice] = "Successfully logged in as a designer"
         elsif current_producer?
           redirect_to producer_dashboard_path(user)
+          flash[:notice] = "Successfully logged in as a producer"
         end
       end
     else

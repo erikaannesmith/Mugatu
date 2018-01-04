@@ -1,0 +1,9 @@
+<div class="title">Title: <%= @design.title %></div>
+<div class="description">Description: <%= @design.description %></div>
+<div class="image-url">Image URL: <%= @design.image_url %></div>
+<div class="due-date">Due Date: <%= @design.due_date %></div>
+<div class="price-range">Price Range: <%= @design.price_range %></div>
+<div class="created-at">Created At: <%= @design.created_at %></div>
+
+<%= link_to "Edit Design", edit_designer_design_path(current_user, @design) %>
+<%= link_to "Delete Design", designer_design_path(current_user, @design), method: :delete %>

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   namespace :designer do
     resources :dashboard, only: [:show]
+    resources :designs
   end
 
   namespace :producer do
