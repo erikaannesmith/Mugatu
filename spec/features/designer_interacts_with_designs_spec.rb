@@ -99,6 +99,7 @@ describe "Designer interacts with designs" do
     expect(current_path).to eq(designer_designs_path(@user))
 
     expect(page).to have_content("#{@design.title} has been removed from your designs.")
+    # expect(page).not_to have_content(@design.title)
   end
 
 end
