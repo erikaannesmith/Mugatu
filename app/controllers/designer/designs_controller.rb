@@ -23,13 +23,15 @@ class Designer::DesignsController < ApplicationController
   end
 
   def create
-    @design = current_user.designs.new(design_params)
-    if @design.save!
-      redirect_to designer_designs_path(current_user)
-      flash[:notice] = "#{@design.title} has been add to your designs!"
-    else
-      redirect_to new_designer_design_path(current_user)
-      flash[:notice] = "#{@design.title} could not be created, please try again."
+    if current_designer?  
+      @design = current_user.designs.new(design_params)
+      if @design.save!
+        redirect_to designer_designs_path(current_user)
+        flash[:notice] = "#{@design.title} has been add to your designs!"
+      else
+        redirect_to new_designer_design_path(current_user)
+        flash[:notice] = "#{@design.title} could not be created, please try again."
+      end
     end
   end
 

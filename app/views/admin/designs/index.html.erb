@@ -1,6 +1,21 @@
+<h1>Pending Designs</h1>
+<%= link_to "Dashboard", admin_dashboard_path(current_user) %>
 
-<% @designs.each do |design| %>
-  <ul class='design'>
-    <li class='title-link'><%= link_to design.title, admin_design_path(current_user, design) %></li>
-  </ul>
-<% end %>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Design</th>
+      <th>Created At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @designs.each do |design| %>
+      <tr class="title-<%= design.title %>">
+        <th scope="row">
+          <%= link_to design.title, admin_design_path(current_user, design) %>
+        </th>
+        <td><%= design.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
