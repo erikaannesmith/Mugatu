@@ -13,7 +13,6 @@ describe "Designer views designs" do
   it "they can view design with status" do
     design = designer.designs.create(title: "wrap dress",
                                     description: "cherry print with tie at waistline",
-                                    image_url: "x",
                                     due_date: "2018-02-03 15:17:42 -0700",
                                     price_range: "$30-50",
                                     status: 'active'

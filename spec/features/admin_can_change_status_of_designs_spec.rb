@@ -12,7 +12,6 @@ describe "Admin can change status of designs" do
     login_user(admin.username, admin.password)
     @design = user.designs.create(title: "wrap dress",
                       description: "cherry print with tie at waistline",
-                      image_url: "x",
                       due_date: "2018-02-03 15:17:42 -0700",
                       price_range: "$30-50")
   end

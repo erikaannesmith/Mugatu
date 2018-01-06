@@ -24,7 +24,7 @@ class Designer::DesignsController < ApplicationController
 
   def create
     if current_designer?  
-      @design = current_user.designs.new(design_params)
+      @design = current_user.designs.create(design_params)
       if @design.save!
         redirect_to designer_designs_path(current_user)
         flash[:notice] = "#{@design.title} has been add to your designs!"
@@ -45,7 +45,7 @@ class Designer::DesignsController < ApplicationController
   private
 
   def design_params
-    params.require(:design).permit(:title, :description, :image_url, :due_date, :price_range)
+    params.require(:design).permit(:title, :description, :due_date, :price_range)
   end
 
 end

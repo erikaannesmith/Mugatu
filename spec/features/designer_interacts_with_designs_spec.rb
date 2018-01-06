@@ -8,7 +8,6 @@ describe "Designer interacts with designs" do
                        ) }
   let!(:design) { user.designs.create(title: "wrap dress",
                                 description: "cherry print with tie at waistline",
-                                image_url: "x",
                                 due_date: "2018-02-03 15:17:42 -0700",
                                 price_range: "$30-50"
                                 ) }  
@@ -42,7 +41,6 @@ describe "Designer interacts with designs" do
 
     expect(page).to have_css('.title')
     expect(page).to have_css('.description')
-    expect(page).to have_css('.image-url')
     expect(page).to have_css('.due-date')
     expect(page).to have_css('.price-range')
     expect(page).to have_css('.created-at')
@@ -55,7 +53,6 @@ describe "Designer interacts with designs" do
 
     expect(page).to have_field("design[title]")
     expect(page).to have_field("design[description]")
-    expect(page).to have_field("design[image_url]")
     expect(page).to have_field("design[due_date]")
     expect(page).to have_field("design[price_range]")
 
@@ -77,7 +74,6 @@ describe "Designer interacts with designs" do
 
     fill_in "design[title]", with: "test design"
     fill_in "design[description]", with: "looks like a test design"
-    fill_in "design[image_url]", with: "www.example.com"
     fill_in "design[due_date]", with: "2018-05-03 15:17:42 -0700"
     fill_in "design[price_range]", with: "75-90"
 
