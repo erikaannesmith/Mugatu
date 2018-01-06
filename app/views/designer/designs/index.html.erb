@@ -1,15 +1,27 @@
 <%= link_to "Post a Design", new_designer_design_path(current_user) %>
 
 <%= @designs.count %> Designs
-
-
-<% @designs.each do |design| %>
-  <ul class="design">
-    <li class="title">Title: <%= link_to design.title, designer_design_path(current_user, design) %></li>
-    <li class="description">Description: <%= design.description %></li>
-    <li class="image-url">Image URL: <%= design.image_url %></li>
-    <li class="due-date">Due Date: <%= design.due_date %></li>
-    <li class="price-range">Price Range: <%= design.price_range %></li>
-    <li class="created-at">Created At: <%= design.created_at %></li>
-  </ul>
-<% end %>
+<div class='designs'>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Design</th>
+        <th>Description</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @designs.each do |design| %>
+        <div class="design">
+          <tr class="title-<%= design.title %>">
+            <th scope="row">
+              <div class="title"><%= link_to design.title, designer_design_path(current_user, design) %></div>
+            </th>
+            <td><div class="description"><%= design.description %></td></div>
+            <td class="status"><%= design.status.capitalize %></td> 
+          </tr>
+        </div>
+      <% end %>
+    </tbody>
+  </table>
+</div>
