@@ -8,6 +8,7 @@
         <th>Design</th>
         <th>Description</th>
         <th>Status</th>
+        <th>Pending Applications</th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +20,7 @@
             </th>
             <td><div class="description"><%= design.description %></td></div>
             <td class="status"><%= design.status.capitalize %></td> 
+            <td><%= design.applications.where(status: 'active').count %></td>
           </tr>
         </div>
       <% end %>

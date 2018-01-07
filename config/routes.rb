@@ -21,8 +21,12 @@ Rails.application.routes.draw do
 
   namespace :designer do
     resources :dashboard, only: [:show]
-    resources :designs
+    resources :designs do
+      resources :applications
+    end
   end
+  get 'designer/approve/design/application', to: 'designer/applications#approve'
+  get 'designer/design/application', to: 'designer/design/application#show'
 
   namespace :producer do
     resources :dashboard, only: [:show]

@@ -1,0 +1,6 @@
+<h1>Application from <%= @application.user.username %> for <%= @application.design.title %></h1>
+
+<p>Production Plan: <%= @application.production_plan %></p>
+<p>Due Date: <%= @application.due_date %></p>
+<p>Price Offer: <%= number_to_currency(@application.price) %></p>
+<%= link_to "Accept Application!", designer_approve_design_application_path(@application) %>
