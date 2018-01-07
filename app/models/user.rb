@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   enum role: ["designer", "producer", "admin"]
   has_many :designs
+  has_many :applications
 
   def self.from_omniauth(auth)
     user = User.where(username: auth["info"]["name"]).first

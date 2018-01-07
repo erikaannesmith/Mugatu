@@ -1,0 +1,24 @@
+<h1>My Applications</h1>
+
+<% @applications.each do |application| %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Design</th>
+        <th>Designer</th>
+        <th>Application Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @applications.each do |app| %>
+        <tr class="title-<%= app.design.title %>">
+          <th scope="row">
+            <%= link_to app.design.title, producer_design_path(current_user, app.design) %>
+          </th>
+          <td><%= app.design.user.username %></td>
+          <td><%= link_to app.status, producer_design_application_path(current_user, app.design, app) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
