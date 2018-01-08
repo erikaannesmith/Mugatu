@@ -1,7 +1,7 @@
 class Producer::DesignsController < ApplicationController
  
   def index
-    @designs = Design.where(status: 'active')
+    @designs = Design.where(status: 1)
   end
 
   def show
