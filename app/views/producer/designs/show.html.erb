@@ -1,0 +1,11 @@
+Title: <%= @design.title %>
+Description: <%= @design.description %>
+Price Range: <%= @design.price_range %>
+Due Date: <%= @design.due_date %>
+Created At: <%= @design.created_at %>
+
+<% if current_user.applications.where(design: @design).empty? %>
+  <%= link_to "Apply to Design!", new_producer_design_application_path(current_user, @design) %>
+<% else %>
+  <%= link_to "View your application!", producer_design_application_path(current_user, @design, current_user.applications.find_by(design: @design)) %>
+<% end %>

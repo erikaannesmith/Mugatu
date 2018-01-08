@@ -1,0 +1,21 @@
+<h1>Active Designs</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Design</th>
+      <th>Designer</th>
+      <th>Created At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @designs.each do |design| %>
+      <tr class="title-<%= design.title %>">
+        <th scope="row">
+          <%= link_to design.title, producer_design_path(current_user, design) %>
+        </th>
+        <td><%= design.user.username %></td>
+        <td><%= design.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
