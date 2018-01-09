@@ -20,10 +20,10 @@ class Designer::ApplicationsController < ApplicationController
         producer_id: @application.user.id
     )
     if order.save!
-      flash[:notice] = "Order ##{order.id} has been created for #{@application.design.title}!"
+      flash[:success] = "Order ##{order.id} has been created for #{@application.design.title}!"
       redirect_to designer_order_path(current_user, order)
     else
-      flash[:notice] = "Order could not be created, please try again!"
+      flash[:danger] = "Order could not be created, please try again!"
       redirect_to designer_design_applications_path(current_user, @application.design)
     end
   end

@@ -2,23 +2,34 @@
 <html>
 <head>
   <title>PersonalProject</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <%= csrf_meta_tags %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
 </head>
 <body>
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, class: name %>
-<% end %>
-<% if current_user %>
-  <%= link_to "Logout", logout_path, method: :delete %>
-<% else %>
-  <%= link_to "Sign Up", new_user_path %>
-  <%= link_to "I already have an account", login_path %>
-  <button class='loginBtn loginBtn--google'>
-    <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-  </button>
-<% end %>
+  <% flash.each do |type, message| %>
+    <% alert_type = case type
+      when 'success' then 'success'
+      when 'error' then 'danger'
+      else 'info'
+      end
+    %>
+    <%= content_tag :div, sanitize(message), class: "#{type} alert alert-#{alert_type}" %>
+  <% end %>
+<nav>
+  <% if current_user %>
+    <% if current_user.admin? %>
+      <%= link_to "Dashboard", admin_dashboard_path(current_user) %>
+    <% elsif current_user.designer? %>
+      <%= link_to "Dashboard", designer_dashboard_path(current_user) %>
+    <% elsif current_user.producer? %>
+      <%= link_to "Dashboard", producer_dashboard_path(current_user) %>
+    <% end %>  
+    <%= link_to "Logout", logout_path, method: :delete, class: 'logout-button' %>
+  <% end %>
+</nav>
 <%= yield %>
 
 </body>

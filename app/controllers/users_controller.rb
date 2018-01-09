@@ -14,10 +14,10 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       if @user.designer?
         redirect_to designer_dashboard_path(@user)
-        flash[:notice] = "Successfully created account as a designer"
+        flash[:success] = "Successfully created account as a designer"
       elsif @user.producer?
         redirect_to producer_dashboard_path(@user)
-        flash[:notice] = "Successfully created account as a producer"
+        flash[:success] = "Successfully created account as a producer"
       end        
     else
       render :new

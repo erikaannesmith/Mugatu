@@ -12,7 +12,7 @@ class Producer::OrdersController < ApplicationController
     @order = Order.find(params[:format])
     @order.shipped!
     redirect_to producer_order_path(current_user, @order)
-    flash[:notice] = "Order ##{@order.id} has been marked as 'shipped'."
+    flash[:success] = "Order ##{@order.id} has been marked as 'shipped'."
   end
 
 end
