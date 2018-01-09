@@ -31,13 +31,13 @@ ActiveRecord::Schema.define(version: 20180108195749) do
   create_table "designs", force: true do |t|
     t.string   "title"
     t.text     "description"
+    t.string   "image_url"
     t.string   "due_date"
     t.string   "price_range"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "status",      default: 0
-    t.string   "image"
   end
 
   add_index "designs", ["user_id"], name: "index_designs_on_user_id", using: :btree
