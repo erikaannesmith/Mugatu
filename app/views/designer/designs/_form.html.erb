@@ -1,0 +1,19 @@
+<div class='new-design'>
+  <%= form_for [:designer, @design] do |f| %>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control' %>
+      
+      <%= f.label :description %>
+      <%= f.text_area :description, class: 'form-control' %>
+        
+      <%= f.label :due_date %>
+      <%= f.text_field :due_date, class: 'form-control' %>
+      
+      <%= f.label :price_range %>
+      <%= f.text_field :price_range, class: 'form-control' %>
+      
+      <%= f.submit "Create Design", class: 'btn btn-primary new-design-btn' %>
+    </div>
+  <% end %>  
+</div>

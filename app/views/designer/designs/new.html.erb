@@ -1,15 +1,1 @@
-<%= form_for [:designer, @design] do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-    
-  <%= f.label :due_date %>
-  <%= f.text_field :due_date %>
-  
-  <%= f.label :price_range %>
-  <%= f.text_field :price_range %>
-  
-  <%= f.submit "Create Design" %>
-<% end %>  
+<%= render partial: 'form' %>

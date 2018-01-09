@@ -1,4 +1,4 @@
-<div class="admin-dashboard">
+<div class="dashboard">
   <h1>Administrator Dashboard</h1>
 
   <ul class="nav nav-tabs">
@@ -7,6 +7,9 @@
     <% end %>
     <%= content_tag :li, class: "whatever #{params[:page] == 'pending' ? 'active' : ''}", role: 'presentation' do %>
       <a href="?page=pending">Pending Designs (<%= @pending_designs.count %>)</a>
+    <% end %>
+    <%= content_tag :li, class: "whatever #{params[:page] == 'orders' ? 'active' : ''}", role: 'presentation' do %>
+      <a href="?page=orders">Orders</a>
     <% end %>
   </ul>
 
@@ -26,7 +29,7 @@
             <th scope="row">
               <%= link_to design.title, admin_design_path(current_user, design) %>
             </th> 
-            <td><%= design.user.username %></td>
+            <td><%= link_to design.user.username, admin_user_path(current_user, design.user) %></td>
             <td class="status"><%= design.status.capitalize %></td> 
           </tr>
         <% end %>
@@ -51,6 +54,36 @@
             </th>
             <td><%= design.user.username %></td>
             <td><%= design.created_at.to_formatted_s(:long) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+
+  <% elsif params[:page] == 'orders' %>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Design</th>
+          <th>Designer</th>
+          <th>Producer</th>
+          <th>Created At</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <th scope="row">
+              <%= link_to order.id, admin_order_path(current_user, order) %>
+            </th>
+            <td><%= link_to order.design.title, admin_design_path(current_user, order.design) %></td>
+            <td><%= link_to order.design.user.username, admin_user_path(current_user, order.design.user) %></td>
+            <td><%= link_to order.application.user.username, admin_user_path(current_user, order.application.user) %></td>
+            <td><%= order.created_at.to_formatted_s(:long) %></td>
+            <td><%= order.status.capitalize %></td>
           </tr>
         <% end %>
       </tbody>

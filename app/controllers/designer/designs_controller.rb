@@ -1,9 +1,5 @@
 class Designer::DesignsController < ApplicationController
 
-  def index
-    @designs = current_user.designs
-  end
-
   def show
     @design = current_user.designs.find(params["format"])
   end

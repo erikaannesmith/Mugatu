@@ -5,8 +5,8 @@ class Admin::OrdersController < ApplicationController
     render file: "/public/404" unless current_admin?
   end
 
-  def index
-
+  def show
+    @order = Order.find(params[:format])
   end
 
 end

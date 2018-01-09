@@ -1,36 +1,44 @@
-<h1><div class="title">Title: <%= @design.title %></div></h1>
-<div class="description">Description: <%= @design.description %></div>
-<div class="due-date">Due Date: <%= @design.due_date %></div>
-<div class="price-range">Price Range: <%= @design.price_range %></div>
-<div class="created-at">Created At: <%= @design.created_at.to_formatted_s(:long) %></div>
+<div class="design-card">
+  <h1><%= @design.title %></h1>
+  <p><strong>Description</strong>: <%= @design.description %></p>
+  <p><strong>Price Range</strong>: <%= @design.price_range %></p>
+  <p><strong>Due Date</strong>: <%= @design.due_date %></p>
+  <p><strong>Created At</strong>: <%= @design.created_at.to_formatted_s(:long) %></p>
+  <p><strong>Status</strong>: <%= @design.status.capitalize %></p>
 
-<%= link_to "Edit Design", edit_designer_design_path(current_user, @design) %>
-<%= link_to "Delete Design", designer_design_path(current_user, @design), method: :delete %>
+  <div class="action-buttons">
+  <%= link_to "Edit Design", edit_designer_design_path(current_user, @design), class: "btn btn-success"%>
+  </div>
+  <% if @design.applications.empty? %>
+    <%= link_to "Delete Design", designer_design_path(current_user, @design), method: :delete, class: "btn btn-danger" %>
+  </div>
+  <% else %>
+    <div class='admin-dashboard'>
+    <h2>Applications</h2>
 
-<h2>Applications</h2>
-
-<% @design.applications.each do |application| %>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Application ID</th>
-        <th>Producer</th>
-        <th>Application Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @design.applications.each do |app| %>
-        <tr class="title-<%= app.design.title %>">
-          <th scope="row">
-            <%= link_to app.id, designer_design_application_path(current_user, app.design, app) %>
-          </th>
-          <td><%= app.user.username %></td>
-          <td><%= app.status %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
-
+    <% @design.applications.each do |application| %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Application ID</th>
+            <th>Producer</th>
+            <th>Application Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @design.applications.each do |app| %>
+            <tr class="title-<%= app.design.title %>">
+              <th scope="row">
+                <%= link_to app.id, designer_design_application_path(current_user, app.design, app) %>
+              </th>
+              <td><%= app.user.username %></td>
+              <td><%= app.status %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+    </div>
+  <% end %>
 
 

@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :orders, only: [:index, :show]
     resources :dashboard, only: [:show]
-    resources :designs, only: [:index, :show]
+    resources :designs, only: [:index, :show] do
+      resources :applications
+    end
+    resources :users, only: [:index, :show]
   end
   get 'admin/approve/design', to: 'admin/designs#approve'
   get 'admin/decline/design', to: 'admin/designs#decline'  

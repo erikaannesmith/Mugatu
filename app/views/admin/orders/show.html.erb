@@ -1,0 +1,10 @@
+<h1>Order #<%= @order.id %></h1>
+
+<div class="order-design">Design: <%= link_to @order.design.title, admin_design_path(current_user, @order.design) %></div>
+<div class="order-producer">Producer: <%= link_to @order.application.user.username, admin_user_path(current_user, @order.application.user)%></div>
+<div class="order-designer">Designer: <%= link_to @order.design.user.username, admin_user_path(current_user, @order.design.user) %></div>
+<div class="order-application-id">Application ID: <%= link_to @order.application.id, admin_design_application_path(current_user, @order.design, @order.application) %></div>
+<div class="order-price">Price: <%= number_to_currency(@order.price) %></div>
+<div class="order-due-date">Due Date: <%= @order.due_date %></div>
+<div class="order-created-at">Created At: <%= @order.created_at.to_formatted_s(:long) %></div>
+<div class="order-status">Status: <%= @order.status.capitalize %></div>
