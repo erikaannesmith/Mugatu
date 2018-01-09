@@ -1,0 +1,119 @@
+<div class="dashboard">
+
+  <h1><%= @user.username %></h1>
+  <h3><%= @user.role.capitalize %></h3>
+
+  <ul class="nav nav-tabs">
+    <%= content_tag :li, class: "whatever #{params[:page] == 'orders' ? 'active' : ''}", role: 'presentation' do %>
+      <a href="?page=orders">Orders</a>
+    <% end %>
+    <%= content_tag :li, class: "whatever #{params[:page] == 'other' ? 'active' : ''}", role: 'presentation' do %>
+      <% if @user.designer? %>
+        <a href="?page=other">Designs</a>
+      <% elsif @user.producer? %>
+        <a href="?page=other">Applications</a>  
+      <% end %>    
+    <% end %>
+  </ul>
+
+    <% if params[:page] == 'orders' %>
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Design</th>
+              <th>Producer</th>
+              <th>Created At</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% if @user.designer? %>
+            <% @designer_orders.each do |order| %>
+            <div class="order">
+                <tr class="id-<%= order.id %>">
+                  <th scope="row">
+                    <div class="order-id"><%= link_to order.id, admin_order_path(current_user, order) %></div>
+                  </th>
+                  <td><div class="design"><%= link_to order.design.title, admin_design_path(current_user, order.design) %></td></div>            
+                  <td><div class="designer"><%= link_to order.application.user.username, admin_user_path(current_user, order.application.user) %></td></div>
+                  <td class="created-at"><%= order.created_at.to_formatted_s(:long) %></td> 
+                  <td><%= order.status.capitalize %></td>
+                </tr>
+              </div>
+            <% end %>
+          </tbody>
+          <% elsif @user.producer? %>
+            <% @producer_orders.each do |order| %>
+            <div class="order">
+                <tr class="id-<%= order.id %>">
+                  <th scope="row">
+                    <div class="order-id"><%= link_to order.id, admin_order_path(current_user, order) %></div>
+                  </th>
+                  <td><div class="design"><%= link_to order.design.title, admin_design_path(current_user, order.design) %></td></div>            
+                  <td><div class="designer"><%= order.application.user.username %></td></div>
+                  <td class="created-at"><%= order.created_at.to_formatted_s(:long) %></td> 
+                  <td><%= order.status.capitalize %></td>
+                </tr>
+              </div>
+            <% end %>
+          </tbody>
+          <% end %>
+        </table>
+
+    <% elsif params[:page] == 'other' %>
+
+      <% if @user.designer? %> 
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Design</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>Pending Applications</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @user.designs.each do |design| %>
+              <div class="design">
+                <tr class="title-<%= design.title %>">
+                  <th scope="row">
+                    <div class="title"><%= link_to design.title, admin_design_path(current_user, design) %></div>
+                  </th>
+                  <td><div class="description"><%= design.description %></td></div>
+                  <td class="status"><%= design.status.capitalize %></td> 
+                  <td><%= design.applications.where(status: 'active').count %></td>
+                </tr>
+              </div>
+            <% end %>
+          </tbody>
+        </table>
+
+      <% elsif @user.producer? %>
+
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Application ID</th>
+                <th>Design</th>
+                <th>Application Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @user.applications.each do |app| %>
+                <tr class="title-<%= app.id %>">
+                  <th scope="row">
+                    <%= link_to app.id, admin_design_application_path(current_user, app.design, app) %>
+                  </th>
+                  <td><%= link_to app.design.title, admin_design_path(current_user, app.design) %></td>
+                  <td><%= app.status %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>    
+      <% end %>
+      
+    <% end %>
+</div>

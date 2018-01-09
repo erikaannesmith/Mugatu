@@ -1,13 +1,19 @@
-<h1>Order #<%= @order.id %></h1>
+<div class="order-card">
+  <h1>Order #<%= @order.id %></h1>
+  <p><strong>Design: <%= link_to @order.design.title, designer_design_path(current_user, @order.design) %></p>
+  <p><strong>Producer:</strong> <%= @order.application.user.username %></p>
+  <p><strong>Application ID:</strong> <%= link_to @order.application.id, designer_design_application_path(current_user, @order.design, @order.application) %></p>
+  <p><strong>Price:</strong> <%= number_to_currency(@order.price) %></p>
+  <p><strong>Due Date:</strong> <%= @order.due_date %></p>
+  <p><strong>Created At:</strong> <%= @order.created_at.to_formatted_s(:long) %></p>
+  <p><strong>Status:</strong> <%= @order.status.capitalize %></p>
+  
+  <% if @order.shipped? %>
+    <div class="action-buttons">
+      <%= link_to "Mark Order as 'Received'!", designer_receive_order_path(@order), class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>
 
-<div class="order-design">Design: <%= link_to @order.design.title, designer_design_path(current_user, @order.design) %></div>
-<div class="order-producer">Producer: <%= @order.application.user.username %></div>
-<div class="order-application-id">Application ID: <%= link_to @order.application.id, designer_design_application_path(current_user, @order.design, @order.application) %></div>
-<div class="order-price">Price: <%= number_to_currency(@order.price) %></div>
-<div class="order-due-date">Due Date: <%= @order.due_date %></div>
-<div class="order-created-at">Created At: <%= @order.created_at.to_formatted_s(:long) %></div>
-<div class="order-status">Status: <%= @order.status.capitalize %></div>
 
-<% if @order.shipped? %>
-  <%= link_to "Mark Order as 'Received'!", designer_receive_order_path(@order) %>
-<% end %>
+

@@ -1,3 +1,4 @@
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 $enable-shadows: true;
@@ -51,7 +52,7 @@ body {
     display: flex;
     flex-direction: column;
     max-width: 200px;
-        padding: 25px;
+    padding: 25px;
 
 }
 
@@ -72,7 +73,7 @@ nav {
   }
 }
 
-.admin-dashboard {
+.dashboard {
   padding-left: 25px;
   padding-right: 25px;
 }
@@ -83,3 +84,27 @@ nav {
   align-items: center;
 }
 
+.order-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.designer-headline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-design-btn {
+  max-height: 37px;
+}
+
+.new-design {
+  max-width: 30%;
+  padding-left: 20px;
+}
+
+.new-design-btn {
+  margin-top: 10px;
+}

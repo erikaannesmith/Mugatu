@@ -15,11 +15,10 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         if current_designer?
           redirect_to designer_dashboard_path(user)
-          flash[:success] = "Successfully logged in as a designer"
         elsif current_producer?
           redirect_to producer_dashboard_path(user)
-          flash[:success] = "Successfully logged in as a producer"
         end
+        flash[:success] = "Welcome, #{current_user.username}!"
       end
     else
       hand_roll_login
@@ -32,14 +31,12 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       if current_admin?
         redirect_to admin_dashboard_path(user)
-        flash[:success] = "Successfully logged in as an administrator"
       elsif current_designer?
         redirect_to designer_dashboard_path(user)
-        flash[:success] = "Successfully logged in as a designer"
       elsif current_producer?
         redirect_to producer_dashboard_path(user)
-        flash[:success] = "Successfully logged in as a producer"
       end
+      flash[:success] = "Welcome, #{current_user.username.capitalize}!"
     else
       redirect_to login_path
       flash[:error] = "Login credentials are incorrect, please try again or create an account!"

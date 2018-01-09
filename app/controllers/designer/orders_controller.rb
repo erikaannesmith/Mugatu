@@ -1,10 +1,5 @@
 class Designer::OrdersController < ApplicationController
 
-  def index
-    user = User.find(params[:format])
-    @orders = Order.where(designer_id: user.id)
-  end
-
   def show
     @order = Order.find(params[:format])
   end
