@@ -1,23 +1,60 @@
-<%= link_to "Designs Pending Approval: #{@pending_designs.count}", admin_designs_path(current_user) %>
+<div class="admin-dashboard">
+  <h1>Administrator Dashboard</h1>
 
-<h1>All Designs</h1>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Design</th>
-      <th>Description</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @designs.each do |design| %>
-      <tr class="title-<%= design.title %>">
-        <th scope="row">
-          <%= link_to design.title, admin_design_path(current_user, design) %>
-        </th>
-        <td><%= design.description %></td>
-        <td class="status"><%= design.status.capitalize %></td> 
-      </tr>
+  <ul class="nav nav-tabs">
+    <%= content_tag :li, class: "whatever #{params[:page] == 'all' ? 'active' : ''}", role: 'presentation' do %>
+      <a href="?page=all">All Designs</a>
     <% end %>
-  </tbody>
-</table>
+    <%= content_tag :li, class: "whatever #{params[:page] == 'pending' ? 'active' : ''}", role: 'presentation' do %>
+      <a href="?page=pending">Pending Designs (<%= @pending_designs.count %>)</a>
+    <% end %>
+  </ul>
+
+  <% if params[:page] == 'all' %>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Design</th>
+          <th>Designer</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @designs.each do |design| %>
+          <tr class="title-<%= design.title %>">
+            <th scope="row">
+              <%= link_to design.title, admin_design_path(current_user, design) %>
+            </th> 
+            <td><%= design.user.username %></td>
+            <td class="status"><%= design.status.capitalize %></td> 
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  <% elsif params[:page] == 'pending' %>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Design</th>
+          <th>Designer</th>
+          <th>Created At</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @pending_designs.each do |design| %>
+          <tr class="title-<%= design.title%>">
+            <th scope="row">
+              <%= link_to design.title, admin_design_path(current_user, design) %>
+            </th>
+            <td><%= design.user.username %></td>
+            <td><%= design.created_at.to_formatted_s(:long) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  <% end %>
+</div>

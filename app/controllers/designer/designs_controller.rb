@@ -27,10 +27,10 @@ class Designer::DesignsController < ApplicationController
       @design = current_user.designs.create(design_params)
       if @design.save!
         redirect_to designer_designs_path(current_user)
-        flash[:notice] = "#{@design.title} has been add to your designs!"
+        flash[:success] = "#{@design.title} has been add to your designs!"
       else
         redirect_to new_designer_design_path(current_user)
-        flash[:notice] = "#{@design.title} could not be created, please try again."
+        flash[:danger] = "#{@design.title} could not be created, please try again."
       end
     end
   end
@@ -39,7 +39,7 @@ class Designer::DesignsController < ApplicationController
     @design = current_user.designs.find(params['format'])
     @design.destroy
     redirect_to designer_designs_path(current_user)
-    flash[:notice] = "#{@design.title} has been removed from your designs."
+    flash[:success] = "#{@design.title} has been removed from your designs."
   end
 
   private

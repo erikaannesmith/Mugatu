@@ -28,9 +28,10 @@ gem 'byebug'
 gem 'launchy'
 gem "omniauth-google-oauth2"
 gem 'figaro'
-
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'jquery-rails'
+
 
 # Use unicorn as the app server
 # gem 'unicorn'

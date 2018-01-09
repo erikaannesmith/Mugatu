@@ -1,9 +1,23 @@
-<%= form_tag login_path do %>
-  <%= label_tag :username %>
-  <%= text_field_tag :username %>
+<body class="login-page">
+  <h1>log in.</h1>
 
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
+  <div class="login-card">
+    <%= form_tag login_path do %>
+      <div class="login-fields">
+        
+        <div class="form-group"><%= text_field_tag :username, nil, placeholder: "username", class: "form-control" %></div>
 
-  <%= submit_tag "Log In" %>
-<% end %>
+        <div class="form-group"><%= password_field_tag :password, nil, placeholder: "password", class: "form-control" %></div>
+
+        <%= submit_tag "Log In", class: "btn btn-secondary btn-block" %>
+      </div>
+    <% end %>
+
+
+    <div class="alt-login-fields">
+      <%= link_to "Create a Free Account", new_user_path, class: 'loginBtn btn btn-primary btn-block', style: 'color: white' %>
+
+      <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in", class: 'loginBtn btn btn-secondary btn-block loginBtn--google', style: "background: #CD4438; color: white" %>
+    </div>
+  </div>
+</body>

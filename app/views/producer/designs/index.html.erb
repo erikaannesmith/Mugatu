@@ -14,7 +14,7 @@
           <%= link_to design.title, producer_design_path(current_user, design) %>
         </th>
         <td><%= design.user.username %></td>
-        <td><%= design.created_at %></td>
+        <td><%= design.created_at.to_formatted_s(:long) %></td>
       </tr>
     <% end %>
   </tbody>

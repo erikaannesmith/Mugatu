@@ -20,7 +20,7 @@
             </th>
             <td><div class="design"><%= link_to order.design.title, producer_design_path(current_user, order.design) %></td></div>            
             <td><div class="designer"><%= order.design.user.username %></td></div>
-            <td class="created-at"><%= order.created_at %></td> 
+            <td class="created-at"><%= order.created_at.to_formatted_s(:long) %></td> 
             <td><%= order.status.capitalize %></td>
           </tr>
         </div>
