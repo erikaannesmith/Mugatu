@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     if params[:provider].present?
-      check_user = User.where(username: request.env['omniauth.auth']["info"]["name"]).first
+      check_user = User.where(username: request.env['omniauth.auth']["info"]["email"]).first
       if check_user.nil?
         user = User.from_omniauth(request.env['omniauth.auth'])
         session[:user_id] = user.id
