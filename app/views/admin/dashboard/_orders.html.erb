@@ -1,0 +1,26 @@
+ <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Design</th>
+          <th>Designer</th>
+          <th>Producer</th>
+          <th>Created At</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <th scope="row">
+              <%= link_to order.id, admin_order_path(current_user, order) %>
+            </th>
+            <td><%= link_to order.design.title, admin_design_path(current_user, order.design) %></td>
+            <td><%= link_to order.design.user.username, admin_user_path(current_user, order.design.user) %></td>
+            <td><%= link_to order.application.user.username, admin_user_path(current_user, order.application.user) %></td>
+            <td><%= order.created_at.to_formatted_s(:long) %></td>
+            <td><%= order.status.capitalize %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>

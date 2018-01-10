@@ -14,65 +14,6 @@
     <% end %>
   </ul>
 
-  <% if params[:page] == 'designs' %>
-
-    <div class='designs'>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Design</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Pending Applications</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @designs.each do |design| %>
-            <div class="design">
-              <tr class="title-<%= design.title %>">
-                <th scope="row">
-                  <div class="title"><%= link_to design.title, designer_design_path(current_user, design) %></div>
-                </th>
-                <td><div class="description"><%= design.description %></td></div>
-                <td class="status"><%= design.status.capitalize %></td> 
-                <td><%= design.applications.where(status: 'active').count %></td>
-              </tr>
-            </div>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-
-  <% elsif params[:page] == 'orders' %>
-
-    <div class='orders'>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Order ID</th>
-            <th>Design</th>
-            <th>Producer</th>
-            <th>Created At</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @orders.each do |order| %>
-            <div class="order">
-              <tr class="id-<%= order.id %>">
-                <th scope="row">
-                  <div class="order-id"><%= link_to order.id, designer_order_path(current_user, order) %></div>
-                </th>
-                <td><div class="producer"><%= order.application.user.username %></td></div>
-                <td class="created-at"><%= order.created_at.to_formatted_s(:long) %></td> 
-                <td><%= order.status.capitalize %></td>
-              </tr>
-            </div>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-
-  <% end %>
+  <%= render @partial %>
 
 </div>

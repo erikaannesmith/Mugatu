@@ -1,11 +1,15 @@
 <div class='new-design'>
-  <%= form_for [:designer, @design] do |f| %>
+  <%= form_for [:designer, @design], html: { multipart: true } do |f| %>
     <div class="form-group">
       <%= f.label :title %>
       <%= f.text_field :title, class: 'form-control' %>
       
       <%= f.label :description %>
       <%= f.text_area :description, class: 'form-control' %>
+
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
         
       <%= f.label :due_date %>
       <%= f.text_field :due_date, class: 'form-control' %>

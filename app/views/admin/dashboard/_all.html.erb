@@ -1,0 +1,20 @@
+<table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Design</th>
+          <th>Designer</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @designs.each do |design| %>
+          <tr class="title-<%= design.title %>">
+            <th scope="row">
+              <%= link_to design.title, admin_design_path(current_user, design) %>
+            </th> 
+            <td><%= link_to design.user.username, admin_user_path(current_user, design.user) %></td>
+            <td class="status"><%= design.status.capitalize %></td> 
+          </tr>
+        <% end %>
+      </tbody>
+    </table>

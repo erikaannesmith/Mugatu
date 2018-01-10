@@ -22,7 +22,7 @@ class Designer::DesignsController < ApplicationController
     if current_designer?  
       @design = current_user.designs.create(design_params)
       if @design.save!
-        redirect_to designer_designs_path(current_user)
+        redirect_to designer_dashboard_path(current_user)
         flash[:success] = "#{@design.title} has been add to your designs!"
       else
         redirect_to new_designer_design_path(current_user)
@@ -34,14 +34,15 @@ class Designer::DesignsController < ApplicationController
   def destroy
     @design = current_user.designs.find(params['format'])
     @design.destroy
-    redirect_to designer_designs_path(current_user)
+    redirect_to designer_dashboard_path(current_user)
     flash[:success] = "#{@design.title} has been removed from your designs."
   end
 
   private
 
   def design_params
-    params.require(:design).permit(:title, :description, :due_date, :price_range)
+    params.require(:design).permit(:title, :description, :due_date, :price_range, :image)
   end
 
+  
 end
