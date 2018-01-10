@@ -1,0 +1,30 @@
+<div class='orders'>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Order ID</th>
+        <th>Design</th>
+        <th>Designer</th>
+        <th>Created At</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <div class="order">
+          <tr class="id-<%= order.id %>">
+            <th scope="row">
+              <%= image_tag(order.design.image_url(:thumbnail)) %>  
+            </th>
+            <td><div class="order-id"><%= link_to order.id, producer_order_path(current_user, order) %></div></td>
+            <td><div class="design"><%= link_to order.design.title, producer_design_path(current_user, order.design) %></td></div>            
+            <td><div class="designer"><%= order.design.user.username %></td></div>
+            <td class="created-at"><%= order.created_at.to_formatted_s(:long) %></td> 
+            <td><%= order.status.capitalize %></td>
+          </tr>
+        </div>
+      <% end %>
+    </tbody>
+  </table>
+</div>

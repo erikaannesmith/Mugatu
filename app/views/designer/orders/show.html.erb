@@ -4,10 +4,10 @@
   <p><strong>Producer:</strong> <%= @order.application.user.username %></p>
   <p><strong>Application ID:</strong> <%= link_to @order.application.id, designer_design_application_path(current_user, @order.design, @order.application) %></p>
   <p><strong>Price:</strong> <%= number_to_currency(@order.price) %></p>
-  <p><strong>Due Date:</strong> <%= @order.due_date %></p>
+  <p><strong>Due Date:</strong> <%= @order.due_date.strftime("%B %d, %Y") %></p>
   <p><strong>Created At:</strong> <%= @order.created_at.to_formatted_s(:long) %></p>
   <p><strong>Status:</strong> <%= @order.status.capitalize %></p>
-  <p><%= image_tag(@order.design.image_url) %></p>
+  <p><%= image_tag(@order.design.image_url(:standard)) %></p>
 
   
   <% if @order.shipped? %>

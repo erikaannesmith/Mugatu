@@ -1,5 +1,19 @@
-<%= link_to "Designs", producer_designs_path(current_user) %>
+<div class="dashboard">
 
-<%= link_to "Applications", producer_design_applications_path(current_user) %>
+  <h1>Producer Dashboard</h1>
 
-<%= link_to "Orders", producer_orders_path(current_user) %>
+  <ul class="nav nav-tabs">
+    <%= content_tag :li, class: "whatever #{params[:page] == 'applications' ? 'active' : ''}", role: 'presentation' do %>
+      <a href="?page=applications">Applications</a>
+    <% end %>
+    <%= content_tag :li, class: "whatever #{params[:page] == 'orders' ? 'active' : ''}", role: 'presentation' do %>
+      <a href="?page=orders">Orders</a>
+    <% end %>
+    <%= content_tag :li, class: "whatever #{params[:page] == 'designs' ? 'active' : ''}", role: 'presentation' do %>
+      <a href="?page=designs">Designs</a>
+    <% end %>
+  </ul>
+
+  <%= render @partial %>
+
+</div>

@@ -2,6 +2,7 @@
   <table class="table table-hover">
     <thead>
       <tr>
+        <th></th>
         <th>Order ID</th>
         <th>Design</th>
         <th>Producer</th>
@@ -14,8 +15,10 @@
         <div class="order">
           <tr class="id-<%= order.id %>">
             <th scope="row">
-              <div class="order-id"><%= link_to order.id, designer_order_path(current_user, order) %></div>
+              <%= image_tag(order.design.image_url(:thumbnail)) %>  
             </th>
+            <td><div class="order-id"><%= link_to order.id, designer_order_path(current_user, order) %></div></td>
+            <td><%= link_to order.design.title, designer_design_path(current_user, order.design) %></td>
             <td><div class="producer"><%= order.application.user.username %></td></div>
             <td class="created-at"><%= order.created_at.to_formatted_s(:long) %></td> 
             <td><%= order.status.capitalize %></td>

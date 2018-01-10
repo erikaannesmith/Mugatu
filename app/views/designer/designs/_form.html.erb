@@ -12,12 +12,12 @@
       <%= f.hidden_field :image_cache %>
         
       <%= f.label :due_date %>
-      <%= f.text_field :due_date, class: 'form-control' %>
+      <%= f.date_select :due_date, class: 'form-control' %>
       
       <%= f.label :price_range %>
       <%= f.text_field :price_range, class: 'form-control' %>
       
-      <%= f.submit "Create Design", class: 'btn btn-primary new-design-btn' %>
+      <%= f.submit "Create Design", class: 'btn btn-primary new-btn' %>
     </div>
   <% end %>  
 </div>

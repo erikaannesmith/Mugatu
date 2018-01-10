@@ -1,13 +1,17 @@
-Title: <%= @design.title %>
-Description: <%= @design.description %>
-Price Range: <%= @design.price_range %>
-Due Date: <%= @design.due_date %>
-Created At: <%= @design.created_at.to_formatted_s(:long) %>
-<p><%= image_tag(@design.image_url) %></p>
+<div class="design-card">
+  <h1><%= @design.title %></h1>
+  <p><strong>Designer</strong>: <%= @design.user.username %></p>
+  <p><strong>Description</strong>: <%= @design.description %></p>
+  <p><strong>Price Range</strong>: <%= @design.price_range %></p>
+  <p><strong>Due Date</strong>: <%= @design.due_date.strftime("%B %d, %Y") %></p>
+  <p><strong>Created At</strong>: <%= @design.created_at.to_formatted_s(:long) %></p>
+  <p><strong>Status</strong>: <%= @design.status.capitalize %></p>
+  <p><%= image_tag(@design.image_url(:standard)) %></p>
 
 
-<% if current_user.applications.where(design: @design).empty? %>
-  <%= link_to "Apply to Design!", new_producer_design_application_path(current_user, @design) %>
-<% else %>
-  <%= link_to "View your application!", producer_design_application_path(current_user, @design, current_user.applications.find_by(design: @design)) %>
-<% end %>
+  <% if current_user.applications.where(design: @design).empty? %>
+    <%= link_to "Apply to Design!", new_producer_design_application_path(current_user, @design), class: 'btn btn-success' %>
+  <% else %>
+    <%= link_to "View your application!", producer_design_application_path(current_user, @design, current_user.applications.find_by(design: @design)), class: 'btn btn-info' %>
+  <% end %>
+</div>
