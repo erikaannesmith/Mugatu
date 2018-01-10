@@ -1,10 +1,16 @@
-<h1>Application from <%= @application.user.username %> for <%= @application.design.title %></h1>
+<div class="application-card">
+  
+  <h1>Application for <%= link_to @application.design.title, designer_design_path(current_user, @application.design) %></h1>
+  <p><strong>Producer</strong>: <%= @application.user.username %></p>  
+  <p><strong>Production Plan</strong>: <%= @application.production_plan %></p>
+  <p><strong>Due Date</strong>: <%= @application.due_date %></p>
+  <p><strong>Price Offer</strong>: <%= number_to_currency(@application.price) %></p>
 
-<p>Production Plan: <%= @application.production_plan %></p>
-<p>Due Date: <%= @application.due_date %></p>
-<p>Price Offer: <%= number_to_currency(@application.price) %></p>
+  <% if @application.active? %>
+    <div class="action-buttons">
+      <%= link_to "Accept Application", designer_approve_design_application_path(@application), class: 'btn btn-success' %>
+      <%= link_to "Decline Application", designer_decline_design_application_path(@application), class: 'btn btn-danger' %>
+    </div>
+  <% end %>
 
-<% if @application.active? %>
-  <%= link_to "Accept Application!", designer_approve_design_application_path(@application) %>
-  <%= link_to "Decline Application", designer_decline_design_application_path(@application) %>
-<% end %>
+</div>
