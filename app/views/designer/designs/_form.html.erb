@@ -8,7 +8,6 @@
       <%= f.text_area :description, class: 'form-control' %>
 
       <%= f.label :image %>
-      <%= image_tag(@design.image_url) if @design.image? %>
       <%= f.file_field :image %>
       <%= f.hidden_field :image_cache %>
         

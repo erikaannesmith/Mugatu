@@ -3,6 +3,7 @@
     <thead>
       <tr>
         <th>Design</th>
+        <th></th>
         <th>Description</th>
         <th>Status</th>
         <th>Pending Applications</th>
@@ -15,6 +16,7 @@
             <th scope="row">
               <div class="title"><%= link_to design.title, designer_design_path(current_user, design) %></div>
             </th>
+            <td><%= image_tag(design.image_url(:thumbnail)) %></td>
             <td><div class="description"><%= design.description %></td></div>
             <td class="status"><%= design.status.capitalize %></td> 
             <td><%= design.applications.where(status: 'active').count %></td>

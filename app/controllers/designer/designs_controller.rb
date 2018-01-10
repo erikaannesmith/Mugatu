@@ -34,7 +34,7 @@ class Designer::DesignsController < ApplicationController
   def destroy
     @design = current_user.designs.find(params['format'])
     @design.destroy
-    redirect_to designer_designs_path(current_user)
+    redirect_to designer_dashboard_path(current_user)
     flash[:success] = "#{@design.title} has been removed from your designs."
   end
 

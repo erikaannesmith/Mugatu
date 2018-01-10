@@ -34,6 +34,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
+gem 'cloudinary'
 
 # Use unicorn as the app server
 # gem 'unicorn'
