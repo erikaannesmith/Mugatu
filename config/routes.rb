@@ -40,8 +40,10 @@ Rails.application.routes.draw do
       resources :applications
     end
     resources :orders
+    get '/label', to: 'shipping#show'
   end
-  get 'producer/ship/order', to: 'producer/orders#ship'  
+  get 'producer/ship/order', to: 'producer/orders#ship'
+  get 'producer/label/order', to: 'producer/orders#generate_label'    
   
 
 end

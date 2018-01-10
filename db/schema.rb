@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20180110202249) do
     t.string  "city"
     t.string  "state"
     t.string  "postal_code"
-    t.string  "country_code"
+    t.string  "country_code",     default: "US"
   end
 
 end
