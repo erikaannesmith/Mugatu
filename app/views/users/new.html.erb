@@ -1,14 +1,34 @@
-<div class="sign-up-field">
-  <%= form_for @user do |f| %>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
+<body class="login-page">
+  <h1>welcome.</h1>
 
-    <%= f.label :password %>
-    <%= f.text_field :password %>
+  <div class="login-card">
+    <%= form_for @user do |f| %>
+      <div class="login-fields">
+        
+        <div class="form-group">
+        <div class='label-cstm'>
+          <%= f.label :username %>
+        </div>
+          <%= f.text_field :username, class: 'form-control' %>
+        </div>
+    
+        <div class="form-group">        
+        <div class='label-cstm'>        
+          <%= f.label :password %>
+        </div>
+          <%= f.text_field :password, class: 'form-control' %>
+        </div>
 
-    <%= f.label :role %>
-    <%= f.select :role, ["designer", "producer"] %>
+        <div class="form-group">
+        <div class='label-cstm'>        
+          <%= f.label :role %>
+        </div>
+          <%= f.select :role, ["designer", "producer"], class: 'form-control' %>
+        </div>
 
-    <%= f.submit "Sign Up" %>
-  <% end %>
-</div>
+        <%= f.submit "Sign Up", class: "btn btn-secondary btn-block" %>
+        
+      </div>
+    <% end %>
+  </div>
+</body>

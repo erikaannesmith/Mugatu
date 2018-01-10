@@ -1,6 +1,9 @@
-<h1>Your Application to <%= @application.design.title %></h1>
-Designer: <%= @application.design.user.username %>
+<div class="application-card">
+  
+  <h1>Application for <%= link_to @application.design.title, producer_design_path(current_user, @application.design) %></h1>
+  <p><strong>Designer</strong>: <%= @application.design.user.username %></p>  
+  <p><strong>Production Plan</strong>: <%= @application.production_plan %></p>
+  <p><strong>Due Date</strong>: <%= @application.due_date %></p>
+  <p><strong>Price Offer</strong>: <%= number_to_currency(@application.price) %></p>
 
-Production Plan: <%= @application.production_plan %>
-Due Date: <%= @application.due_date %>
-Price: <%= @application.price %>
+</div>

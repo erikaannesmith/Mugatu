@@ -1,14 +1,18 @@
-<h1>Order #<%= @order.id %></h1>
+<div class="order-card">
+  <h1>Order #<%= @order.id %></h1>
+  <p><strong>Design:</strong> <%= link_to @order.design.title, designer_design_path(current_user, @order.design) %></p>
+  <p><strong>Designer:</strong> <%= @order.design.user.username %></p>
+  <p><strong>Application ID:</strong> <%= link_to @order.application.id, designer_design_application_path(current_user, @order.design, @order.application) %></p>
+  <p><strong>Price:</strong> <%= number_to_currency(@order.price) %></p>
+  <p><strong>Due Date:</strong> <%= @order.due_date %></p>
+  <p><strong>Created At:</strong> <%= @order.created_at.to_formatted_s(:long) %></p>
+  <p><strong>Status:</strong> <%= @order.status.capitalize %></p>
+  <p><%= image_tag(@order.design.image_url(:standard)) %></p>
 
-<div class="order-design">Design: <%= link_to @order.design.title, producer_design_path(current_user, @order.design) %></div>
-<div class="order-producer">Designer: <%= @order.design.user.username %></div>
-<div class="order-application-id">Application ID: <%= link_to @order.application.id, producer_design_application_path(current_user, @order.design, @order.application) %></div>
-<div class="order-price">Price: <%= number_to_currency(@order.price) %></div>
-<div class="order-due-date">Due Date: <%= @order.due_date %></div>
-<div class="order-created-at">Created At: <%= @order.created_at.to_formatted_s(:long) %></div>
-<div class="order-status">Status: <%= @order.status.capitalize %></div>
-<p><%= image_tag(@order.design.image_url(:standard)) %></p>
+  <% if @order.open? %>
+    <div class="action-buttons">
+    <%= link_to "Mark Order as 'Shipped'!", producer_ship_order_path(@order), class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>
 
-<% if @order.open? %>
-  <%= link_to "Mark Order as 'Shipped'!", producer_ship_order_path(@order) %>
-<% end %>

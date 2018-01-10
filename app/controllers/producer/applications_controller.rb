@@ -15,7 +15,7 @@ class Producer::ApplicationsController < ApplicationController
       @application = design.applications.create(application_params)
       @application.user = current_user
       if @application.save!
-        redirect_to producer_designs_path(current_user)
+        redirect_to producer_dashboard_path(current_user)
         flash[:success] = "Your application to #{@application.design.title} has been submitted!"
       else
         redirect_to new_producer_design_application(current_user, @application.design)

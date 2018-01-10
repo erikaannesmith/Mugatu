@@ -1,6 +1,20 @@
-<%= form_for @user do |f| %>
-  <%= f.label :role %>
-  <%= f.select :role, ["designer", "producer"] %>
-  
-  <%= f.submit "Finish Profile!" %>
-<% end %>
+<body class="login-page">
+  <h1>almost there.</h1>
+
+  <div class="login-card">
+    <%= form_for @user do |f| %>
+      <div class="login-fields">
+        
+        <div class="form-group">
+        <div class='label-cstm'>
+          <%= f.label :role %>
+        </div>
+          <%= f.select :role, ["designer", "producer"], class:'form-control' %>
+        </div>
+
+        <%= f.submit "Finish Profile!", class: "btn btn-secondary btn-block" %>
+        
+      </div>
+    <% end %>
+  </div>
+</body>
