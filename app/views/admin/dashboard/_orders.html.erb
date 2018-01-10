@@ -14,7 +14,7 @@
         <% @orders.each do |order| %>
           <tr>
             <th scope="row">
-              <%= image_tag(order.design.image_url(:thumbnail)) %>  
+              <%= cl_image_tag(order.design.image_url(:thumbnail)) %>  
             </th>
               <td><%= link_to order.id, admin_order_path(current_user, order) %></td>
             <td><%= link_to order.design.title, admin_design_path(current_user, order.design) %></td>

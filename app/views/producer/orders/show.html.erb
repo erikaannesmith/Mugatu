@@ -7,7 +7,7 @@
   <p><strong>Due Date:</strong> <%= @order.due_date.strftime("%B %d, %Y") %></p>
   <p><strong>Created At:</strong> <%= @order.created_at.to_formatted_s(:long) %></p>
   <p><strong>Status:</strong> <%= @order.status.capitalize %></p>
-  <p><%= image_tag(@order.design.image_url(:standard)) %></p>
+  <p><%= cl_image_tag(@order.design.image_url(:standard)) %></p>
 
   <% if @order.open? %>
     <div class="action-buttons">

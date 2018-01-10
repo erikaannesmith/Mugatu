@@ -13,7 +13,7 @@
       <% @applications.each do |app| %>
         <tr class="title-<%= app.design.title %>">
           <th scope="row">
-            <%= image_tag(app.design.image_url(:thumbnail)) %>  
+            <%= cl_image_tag(app.design.image_url(:thumbnail)) %>  
           </th>
           <td><%= link_to app.id, producer_design_application_path(current_user, app.design, app) %></td>
           <td><%= link_to app.design.title, producer_design_path(current_user, app.design) %></td>

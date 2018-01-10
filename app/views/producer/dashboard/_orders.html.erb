@@ -15,7 +15,7 @@
         <div class="order">
           <tr class="id-<%= order.id %>">
             <th scope="row">
-              <%= image_tag(order.design.image_url(:thumbnail)) %>  
+              <%= cl_image_tag(order.design.image_url(:thumbnail)) %>  
             </th>
             <td><div class="order-id"><%= link_to order.id, producer_order_path(current_user, order) %></div></td>
             <td><div class="design"><%= link_to order.design.title, producer_design_path(current_user, order.design) %></td></div>            
