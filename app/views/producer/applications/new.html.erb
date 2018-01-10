@@ -6,9 +6,9 @@
     <%= f.text_area :production_plan, class: 'form-control' %>
 
     <%= f.label :due_date %>
-    <%= f.text_field :due_date, class: 'form-control' %>
+    <%= f.date_select :due_date, class: 'form-control' %></br>
 
-    <%= f.label :price %>
+    <%= f.label :price, 'Price Offer' %>
     <%= f.text_field :price, class: 'form-control' %>
 
     <%= f.submit "Apply to Design", class: 'btn btn-primary new-btn' %>

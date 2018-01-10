@@ -2,6 +2,7 @@
   <table class="table table-hover">
     <thead>
       <tr>
+        <th></th>
         <th>Application ID</th>
         <th>Design</th>
         <th>Designer</th>
@@ -12,8 +13,9 @@
       <% @applications.each do |app| %>
         <tr class="title-<%= app.design.title %>">
           <th scope="row">
-            <%= link_to app.id, producer_design_application_path(current_user, app.design, app) %>
+            <%= image_tag(app.design.image_url(:thumbnail)) %>  
           </th>
+          <td><%= link_to app.id, producer_design_application_path(current_user, app.design, app) %></td>
           <td><%= link_to app.design.title, producer_design_path(current_user, app.design) %></td>
           <td><%= app.design.user.username %></td>
           <td><%= app.status %></td>

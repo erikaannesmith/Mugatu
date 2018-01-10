@@ -1,6 +1,7 @@
  <table class="table table-hover">
       <thead>
         <tr>
+          <th></th>
           <th>Design</th>
           <th>Designer</th>
           <th>Created At</th>
@@ -10,8 +11,9 @@
         <% @pending_designs.each do |design| %>
           <tr class="title-<%= design.title%>">
             <th scope="row">
-              <%= link_to design.title, admin_design_path(current_user, design) %>
+              <%= image_tag(design.image_url(:thumbnail)) %>  
             </th>
+            <td><%= link_to design.title, admin_design_path(current_user, design) %></td>
             <td><%= link_to design.user.username, admin_user_path(current_user, design.user) %></td>
             <td><%= design.created_at.to_formatted_s(:long) %></td>
           </tr>
