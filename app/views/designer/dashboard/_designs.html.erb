@@ -1,0 +1,26 @@
+<div class='designs'>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Design</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Pending Applications</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @designs.each do |design| %>
+        <div class="design">
+          <tr class="title-<%= design.title %>">
+            <th scope="row">
+              <div class="title"><%= link_to design.title, designer_design_path(current_user, design) %></div>
+            </th>
+            <td><div class="description"><%= design.description %></td></div>
+            <td class="status"><%= design.status.capitalize %></td> 
+            <td><%= design.applications.where(status: 'active').count %></td>
+          </tr>
+        </div>
+      <% end %>
+    </tbody>
+  </table>
+</div>

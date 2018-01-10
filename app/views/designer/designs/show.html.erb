@@ -5,6 +5,7 @@
   <p><strong>Due Date</strong>: <%= @design.due_date %></p>
   <p><strong>Created At</strong>: <%= @design.created_at.to_formatted_s(:long) %></p>
   <p><strong>Status</strong>: <%= @design.status.capitalize %></p>
+  <p><%= image_tag(@design.image_url) %></p>
 
   <div class="action-buttons">
   <%= link_to "Edit Design", edit_designer_design_path(current_user, @design), class: "btn btn-success"%>
