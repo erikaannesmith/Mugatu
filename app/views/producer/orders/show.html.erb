@@ -7,7 +7,7 @@
 <div class="order-due-date">Due Date: <%= @order.due_date %></div>
 <div class="order-created-at">Created At: <%= @order.created_at.to_formatted_s(:long) %></div>
 <div class="order-status">Status: <%= @order.status.capitalize %></div>
-<p><%= image_tag(@order.design.image_url) %></p>
+<p><%= image_tag(@order.design.image_url(:standard)) %></p>
 
 <% if @order.open? %>
   <%= link_to "Mark Order as 'Shipped'!", producer_ship_order_path(@order) %>

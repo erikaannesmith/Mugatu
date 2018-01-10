@@ -1,9 +1,5 @@
 class Producer::OrdersController < ApplicationController
 
-  def index
-    @orders = Order.where(producer_id: params[:format])
-  end
-
   def show
     @order = Order.find(params[:format])
   end
