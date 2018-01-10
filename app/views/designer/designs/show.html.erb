@@ -2,7 +2,7 @@
   <h1><%= @design.title %></h1>
   <p><strong>Description</strong>: <%= @design.description %></p>
   <p><strong>Price Range</strong>: <%= @design.price_range %></p>
-  <p><strong>Due Date</strong>: <%= @design.due_date %></p>
+  <p><strong>Due Date</strong>: <%= @design.due_date.strftime("%B %d, %Y") %></p>
   <p><strong>Created At</strong>: <%= @design.created_at.to_formatted_s(:long) %></p>
   <p><strong>Status</strong>: <%= @design.status.capitalize %></p>
   <p><%= image_tag(@design.image_url(:standard)) %></p>
