@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
       user.save
     elsif user.nil?
       user = User.create(username: auth["info"]["email"],
-      #  image: auth["info"]["image"],
       token: auth["credentials"]["token"],
       token_expiration: auth["credentials"]["expires_at"],
       password: 'n/a')

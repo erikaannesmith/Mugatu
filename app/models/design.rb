@@ -4,7 +4,4 @@ class Design < ActiveRecord::Base
   has_many :applications
   mount_uploader :image, ImageUploader
   
-  # def self.count_by_status
-  #   group(:status).count
-  # end
 end
