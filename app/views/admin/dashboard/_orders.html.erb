@@ -18,8 +18,8 @@
             </th>
               <td><%= link_to order.id, admin_order_path(current_user, order) %></td>
             <td><%= link_to order.design.title, admin_design_path(current_user, order.design) %></td>
-            <td><%= link_to order.design.user.username, admin_user_path(current_user, order.design.user) %></td>
-            <td><%= link_to order.application.user.username, admin_user_path(current_user, order.application.user) %></td>
+            <td><%= link_to order.design.user.name, admin_user_path(current_user, order.design.user) %></td>
+            <td><%= link_to order.application.user.name, admin_user_path(current_user, order.application.user) %></td>
             <td><%= order.created_at.to_formatted_s(:long) %></td>
             <td><%= order.status.capitalize %></td>
           </tr>

@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resources :applications
     end
     resources :orders
+    resources :users, only: [:show]
   end
   get 'designer/decline/design/application', to: 'designer/applications#decline'  
   get 'designer/approve/design/application', to: 'designer/applications#approve'
@@ -40,6 +41,7 @@ Rails.application.routes.draw do
       resources :applications
     end
     resources :orders
+    resources :users
     get '/label', to: 'shipping#show'
   end
   get 'producer/ship/order', to: 'producer/orders#ship'
