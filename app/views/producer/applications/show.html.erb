@@ -1,7 +1,7 @@
 <div class="application-card">
   
   <h1>Application for <%= link_to @application.design.title, producer_design_path(current_user, @application.design) %></h1>
-  <p><strong>Designer</strong>: <%= @application.design.user.username %></p>  
+  <p><strong>Designer</strong>: <%= link_to @application.design.user.name, producer_user_path(current_user, @application.design.user) %></p>  
   <p><strong>Production Plan</strong>: <%= @application.production_plan %></p>
   <p><strong>Due Date</strong>: <%= @application.due_date.strftime("%B %d, %Y") %></p>
   <p><strong>Price Offer</strong>: <%= number_to_currency(@application.price) %></p>
