@@ -17,7 +17,7 @@
                     <div class="order-id"><%= link_to order.id, admin_order_path(current_user, order) %></div>
                   </th>
                   <td><div class="design"><%= link_to order.design.title, admin_design_path(current_user, order.design) %></td></div>            
-                  <td><div class="designer"><%= link_to order.application.user.username, admin_user_path(current_user, order.application.user) %></td></div>
+                  <td><div class="designer"><%= link_to order.application.user.name, admin_user_path(current_user, order.application.user) %></td></div>
                   <td class="created-at"><%= order.created_at.to_formatted_s(:long) %></td> 
                   <td><%= order.status.capitalize %></td>
                 </tr>
@@ -32,7 +32,7 @@
                     <div class="order-id"><%= link_to order.id, admin_order_path(current_user, order) %></div>
                   </th>
                   <td><div class="design"><%= link_to order.design.title, admin_design_path(current_user, order.design) %></td></div>            
-                  <td><div class="designer"><%= order.application.user.username %></td></div>
+                  <td><div class="designer"><%= link_to order.application.user.name, admin_user_path(current_user, order.application.user) %></td></div>
                   <td class="created-at"><%= order.created_at.to_formatted_s(:long) %></td> 
                   <td><%= order.status.capitalize %></td>
                 </tr>
