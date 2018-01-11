@@ -25,8 +25,9 @@ describe "Admin can interact with designs" do
 
     click_on 'dress'
 
-    expect(Design.last.status).to eq('pending')
-    expect(current_path).to eq(admin_design_path(admin, Design.last))
+    design = Design.last
+    expect(design.status).to eq('pending')
+    expect(current_path).to eq(admin_design_path(admin, design))
     
     click_on "Approve"
     
@@ -63,8 +64,9 @@ describe "Admin can interact with designs" do
 
     click_on 'dress'
     
-    expect(Design.last.status).to eq('pending')
-    expect(current_path).to eq(admin_design_path(admin, Design.last))
+    design = Design.last
+    expect(design.status).to eq('pending')
+    expect(current_path).to eq(admin_design_path(admin, design))
     
     click_on "Decline"
     
