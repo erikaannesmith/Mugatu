@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180110045206) do
+ActiveRecord::Schema.define(version: 20180110202249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,13 @@ ActiveRecord::Schema.define(version: 20180110045206) do
     t.integer "role"
     t.string  "token"
     t.string  "token_expiration"
+    t.string  "name"
+    t.string  "phone_number"
+    t.string  "address"
+    t.string  "city"
+    t.string  "state"
+    t.string  "postal_code"
+    t.string  "country_code",     default: "US"
   end
 
 end

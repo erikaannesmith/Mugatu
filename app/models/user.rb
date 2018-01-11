@@ -6,13 +6,12 @@ class User < ActiveRecord::Base
   has_many :applications
 
   def self.from_omniauth(auth)
-    user = User.where(username: auth["info"]["name"]).first
+    user = User.where(username: auth["info"]["email"]).first
     if user && user.token != auth["credentials"]["token"]
       user.token = auth["credentials"]["token"]
       user.save
     elsif user.nil?
-      user = User.create(username: auth["info"]["name"],
-      #  image: auth["info"]["image"],
+      user = User.create(username: auth["info"]["email"],
       token: auth["credentials"]["token"],
       token_expiration: auth["credentials"]["expires_at"],
       password: 'n/a')

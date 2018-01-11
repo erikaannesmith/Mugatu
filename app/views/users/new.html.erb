@@ -26,6 +26,48 @@
           <%= f.select :role, ["designer", "producer"], class: 'form-control' %>
         </div>
 
+                <div class="form-group">
+        <div class='label-cstm'>
+          <%= f.label :name %>
+        </div>
+          <%= f.text_field :name, class:'form-control' %>
+        </div>
+
+        <div class="form-group">
+        <div class='label-cstm'>
+          <%= f.label :phone_number %>
+        </div>
+          <%= f.text_field :phone_number, class:'form-control' %>
+        </div>
+
+        <div class="form-group">
+        <div class='label-cstm'>
+          <%= f.label :address %>
+        </div>
+          <%= f.text_field :address, class:'form-control' %>
+        </div>
+
+        <div class="form-group">
+        <div class='label-cstm'>
+          <%= f.label :city %>
+        </div>
+          <%= f.text_field :city, class:'form-control' %>
+        </div>
+
+        <div class="form-group">
+        <div class='label-cstm'>
+          <%= f.label :state %>
+        </div>
+          <%= f.text_field :state, class:'form-control' %>
+        </div>
+
+        <div class="form-group">
+        <div class='label-cstm'>
+          <%= f.label :postal_code %>
+        </div>
+          <%= f.text_field :postal_code, class:'form-control' %>
+        </div>
+
         <%= f.submit "Sign Up", class: "btn btn-secondary btn-block" %>
         
       </div>
