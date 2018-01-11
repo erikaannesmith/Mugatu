@@ -1,11 +1,14 @@
-<%= form_for [:designer, @rating.order, @rating] do |f| %>
+<div class='new-app'>
+  <%= form_for [:designer, @rating.order, @rating] do |f| %>
 
-  <%= f.label :efficiency %>
-  <%= f.select :efficiency, [1, 2, 3, 4, 5] %>
+    <%= f.label :efficiency %>
+    <%= f.select :efficiency, [1, 2, 3, 4, 5], class: 'form-control' %>
 
-  <%= f.label :accuracy %>
-  <%= f.select :accuracy, [1, 2, 3, 4, 5] %>
+    <%= f.label :accuracy %>
+    <%= f.select :accuracy, [1, 2, 3, 4, 5], class: 'form-control' %>
 
-  <%= f.submit "Rate Order" %>
+    <%= f.submit "Rate Order", class: 'btn btn-primary new-btn' %>
 
-<% end %>
+  <% end %>
+</div>
+    
