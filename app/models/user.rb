@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
       user.token = auth["credentials"]["token"]
       user.save
     elsif user.nil?
-      byebug
       user = User.create(username: auth["info"]["email"],
       name: auth["info"]["name"],
       token: auth["credentials"]["token"],
@@ -20,5 +19,13 @@ class User < ActiveRecord::Base
       user.save!
     end
     user
+  end
+
+  def user_rating
+    orders = Order.where(status: 2, producer_id: self.id)
+    totals = orders.map do |order|
+      order.total_rating 
+    end.sum
+    totals / orders.count
   end
 end
