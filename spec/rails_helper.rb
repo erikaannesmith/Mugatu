@@ -28,7 +28,6 @@ ActiveRecord::Migration.maintain_test_schema!
 
 def login_user(username, password)
   visit '/'
-  click_on "I already have an account"
   fill_in "username", with: username
   fill_in "password", with: password
   click_on "Log In"
