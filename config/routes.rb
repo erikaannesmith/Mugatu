@@ -27,7 +27,9 @@ Rails.application.routes.draw do
     resources :designs do
       resources :applications
     end
-    resources :orders
+    resources :orders do
+      resources :ratings, only: [:new, :create]
+    end
     resources :users, only: [:show]
   end
   get 'designer/decline/design/application', to: 'designer/applications#decline'  
