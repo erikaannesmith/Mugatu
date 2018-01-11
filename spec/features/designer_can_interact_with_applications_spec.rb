@@ -30,8 +30,9 @@ describe "Designer can interact with applications" do
 
     click_on "Accept Application"
 
-    expect(page).to have_content("Order ##{Order.last.id} has been created for #{design.title}!")
-    expect(current_path).to eq(designer_order_path(user, Order.last))
+    order = Order.last
+    expect(page).to have_content("Order ##{order.id} has been created for #{design.title}!")
+    expect(current_path).to eq(designer_order_path(user, order))
   end
 
   it "they can decline them" do
