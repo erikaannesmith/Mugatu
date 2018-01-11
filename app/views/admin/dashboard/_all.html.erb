@@ -14,7 +14,7 @@
               <%= cl_image_tag(design.image_url(:thumbnail)) %>  
             </th> 
             <td><%= link_to design.title, admin_design_path(current_user, design) %></td>
-            <td><%= link_to design.user.username, admin_user_path(current_user, design.user) %></td>
+            <td><%= link_to design.user.name, admin_user_path(current_user, design.user) %></td>
             <td class="status"><%= design.status.capitalize %></td> 
           </tr>
         <% end %>

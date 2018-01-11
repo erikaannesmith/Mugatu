@@ -1,8 +1,13 @@
 <div class="dashboard">
 
-  <h1><%= @user.username %></h1>
+  <h1><%= @user.name %></h1>
   <h3><%= @user.role.capitalize %></h3>
-
+  <strong>Address:</strong> 
+  <p><%= @user.address %></p>
+  <p><%= @user.city %>, <%= @user.state %> <%= @user.postal_code %></p>
+  <strong>Phone Number:</strong>
+  <p><%= @user.phone_number %></p>
+  
   <ul class="nav nav-tabs">
     <%= content_tag :li, class: "whatever #{params[:page] == 'orders' ? 'active' : ''}", role: 'presentation' do %>
       <a href="?page=orders">Orders</a>

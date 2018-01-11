@@ -17,7 +17,7 @@
           </th>
           <td><%= link_to app.id, producer_design_application_path(current_user, app.design, app) %></td>
           <td><%= link_to app.design.title, producer_design_path(current_user, app.design) %></td>
-          <td><%= app.design.user.username %></td>
+          <td><%= link_to app.design.user.name, producer_user_path(current_user, app.design.user) %></td>
           <td><%= app.status %></td>
         </tr>
       <% end %>

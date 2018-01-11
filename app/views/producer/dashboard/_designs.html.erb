@@ -14,7 +14,7 @@
           <%= cl_image_tag(design.image_url(:thumbnail)) %>  
         </th>
         <td><%= link_to design.title, producer_design_path(current_user, design) %></td>
-        <td><%= design.user.username %></td>
+        <td><%= link_to design.user.name, producer_user_path(current_user, design.user) %></td>
         <td><%= design.created_at.to_formatted_s(:long) %></td>
       </tr>
     <% end %>
