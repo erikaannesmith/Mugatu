@@ -1,6 +1,6 @@
 <div class="design-card">
   <h1><%= @design.title %></h1>
-  <p><strong>Designer</strong>: <%= @design.user.username %></p>
+  <p><strong>Designer</strong>: <%= link_to @design.user.name, producer_user_path(current_user, @design.user) %></p>
   <p><strong>Description</strong>: <%= @design.description %></p>
   <p><strong>Price Range</strong>: <%= @design.price_range %></p>
   <p><strong>Due Date</strong>: <%= @design.due_date.strftime("%B %d, %Y") %></p>

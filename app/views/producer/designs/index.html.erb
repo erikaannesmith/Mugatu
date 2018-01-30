@@ -13,7 +13,7 @@
         <th scope="row">
           <%= link_to design.title, producer_design_path(current_user, design) %>
         </th>
-        <td><%= design.user.username %></td>
+        <td><%= link_to design.user.name, producer_user_path(current_user, design.user) %></td>
         <td><%= design.created_at.to_formatted_s(:long) %></td>
       </tr>
     <% end %>

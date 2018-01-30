@@ -32,7 +32,7 @@
               <th scope="row">
                 <%= link_to app.id, designer_design_application_path(current_user, app.design, app) %>
               </th>
-              <td><%= app.user.username %></td>
+              <td><%= link_to app.user.name, designer_user_path(current_user, app.user) %></td>
               <td><%= app.status %></td>
             </tr>
           <% end %>

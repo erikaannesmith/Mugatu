@@ -1,7 +1,7 @@
 <div class="order-card">
   <h1>Order #<%= @order.id %></h1>
   <p><strong>Design:</strong> <%= link_to @order.design.title, designer_design_path(current_user, @order.design) %></p>
-  <p><strong>Producer:</strong> <%= @order.application.user.username %></p>
+  <p><strong>Producer:</strong> <%= link_to @order.application.user.name, designer_user_path(current_user, @order.application.user) %></p>
   <p><strong>Application ID:</strong> <%= link_to @order.application.id, designer_design_application_path(current_user, @order.design, @order.application) %></p>
   <p><strong>Price:</strong> <%= number_to_currency(@order.price) %></p>
   <p><strong>Due Date:</strong> <%= @order.due_date.strftime("%B %d, %Y") %></p>
