@@ -10,6 +10,7 @@ This app aims to offer designers in their early stages a sustainable and economi
 ## Setup
 
 *Run in Ruby version 2.3.1*
+
 Run the following commands from the command line of your terminal:
 1. Clone this repository: 
 `git clone git@github.com:erikaannesmith/Mugatu.git`
