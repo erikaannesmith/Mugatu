@@ -17,13 +17,13 @@ Run the following commands from the command line of your terminal:
 
 `git clone git@github.com:erikaannesmith/Mugatu.git`
 
-2. Run RSpec test suite:
-
-`rspec`
-
-3. Create and migrate the database:
+2. Create and migrate the database:
 
 `rake db:{create, migrate}`
+
+3. Run RSpec test suite:
+
+`rspec`
 
 4. Boot the server:
 
