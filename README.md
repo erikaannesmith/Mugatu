@@ -12,18 +12,23 @@ This app aims to offer designers in their early stages a sustainable and economi
 *Run in Ruby version 2.3.1*
 
 Run the following commands from the command line of your terminal:
+
 1. Clone this repository: 
 
 `git clone git@github.com:erikaannesmith/Mugatu.git`
+
 2. Run RSpec test suite:
 
 `rspec`
+
 3. Create and migrate the database:
 
 `rake db:{create, migrate}`
+
 4. Boot the server:
 
 `rails s`
-4. Visit localhost in the browser:
+
+5. Visit localhost in the browser:
 
 `https://localhost:3000`
